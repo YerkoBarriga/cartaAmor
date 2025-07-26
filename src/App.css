@@ -1,0 +1,229 @@
+/* src/App.css */
+#root {
+  background-image: url('IMG20231128190008.jpg');
+  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll (opcional) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  color: #333;
+  
+  font-family: 'Inter', sans-serif; /* Usamos Inter como fuente principal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ocupa al menos el 100% de la altura del viewport */
+  width: 100vw; /* Ocupa el 100% del ancho del viewport */
+  overflow: auto; /* Permite scroll si el contenido es más grande que la pantalla */
+  padding: 20px; /* Espaciado general para evitar que el contenido toque los bordes */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+}
+
+.app-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  opacity: 0.8; /* Ligera transparencia para un efecto sutil */
+}
+
+h3 {
+  color: #a23a61;
+  margin-bottom: 20px;
+}
+
+.instruccion {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.teclado {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.teclado button {
+  color: black;
+  padding: 20px;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 8px;
+  background-color: #e26575;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.teclado button:hover {
+  background-color: #a23a61;;
+  transform: translateY(-2px);
+}
+
+.teclado button:active {
+  background-color: #c0c0c0;
+  transform: translateY(0);
+}
+
+.reiniciar-btn {
+  grid-column: span 3; /* Hace que el botón de reiniciar ocupe todo el ancho */
+  background-color: #ff4d4d !important;
+  color: white;
+  margin-top: 15px;
+}
+
+.reiniciar-btn:hover {
+  background-color: #cc0000 !important;
+}
+
+.error-mensaje {
+  color: #ff4d4d;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* Estilos para la interfaz secreta */
+.interfaz-secreta {
+  padding: 40px 20px;
+  background-color: #d4edda;
+  border: 2px solid #28a745;
+  border-radius: 10px;
+  color: #155724;
+}
+
+.interfaz-secreta h2 {
+  color: #28a745;
+  margin-bottom: 15px;
+}
+
+.interfaz-secreta p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+/* Animación del Corazón Palpitante (para el ícono del corazón) */
+@keyframes pulseHeart {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2); /* Se agranda más para el latido */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Contenedor del Corazón (para centrarlo y controlar su visibilidad) */
+.heart-animation-container {
+  position: absolute; /* Permite posicionar el corazón sobre otros elementos */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centra el elemento exactamente */
+  z-index: 10; /* Asegura que esté por encima de otros elementos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Empieza invisible */
+  animation: none; /* Por defecto no tiene animación */
+}
+
+/* Ícono del Corazón (el emoji) */
+.heart-icon {
+  font-size: 10em; /* Tamaño grande para el corazón */
+  animation: pulseHeart 0.8s infinite ease-in-out; /* Palpita continuamente */
+  /* La duración de 0.8s es para un latido. El corazón estará visible 1.5s, así que latirá varias veces. */
+}
+
+/* Animación de Entrada para el Corazón */
+@keyframes fadeInHeart {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5); /* Empieza pequeño e invisible */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Termina normal y visible */
+  }
+}
+
+.fade-in-heart-animation {
+  animation: fadeInHeart 0.3s ease-out forwards; /* Aparece el corazón en 0.3s */
+}
+
+/* Animación de Salida para el Corazón */
+@keyframes fadeOutHeart {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5); /* Se encoge y desvanece */
+    pointer-events: none; /* Deshabilita clics */
+  }
+}
+
+.fade-out-heart-animation {
+  animation: fadeOutHeart 0.5s ease-in forwards; /* Desaparece el corazón en 0.5s */
+}
+
+
+/* Animación de Salida Rápida para la Interfaz de Entrada */
+@keyframes fadeOutQuick {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px); /* Se mueve ligeramente hacia arriba mientras desaparece */
+    pointer-events: none;
+  }
+}
+
+.fade-out-quick-animation {
+  animation: fadeOutQuick 0.3s ease-out forwards; /* Desaparece rápidamente en 0.3s */
+}
+
+
+/* Animación de Entrada para la Interfaz Secreta (ya teníamos esta, solo la renombro para claridad) */
+@keyframes fadeInContent {
+  from {
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to {
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.fade-in-animation { /* Esta clase ya la tienes en tu JSX */
+  animation: fadeInContent 0.5s ease-out forwards; 
+}
+
+
+/* Asegúrate de que el .app-container no tenga animaciones que interfieran */
+.app-container {
+  /* Elimina cualquier animación 'heart-beat-animation' o similar que tuvieras aquí */
+  animation: none !important; /* Asegura que no haya animaciones de latido en el contenedor principal */
+  /* ... (el resto de tus estilos de .app-container) ... */
+  background-color: rgba(255, 255, 255, 0.9); 
+  padding: 30px;
+  border-radius: 15px; 
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); 
+  text-align: center;
+  width: 95%; 
+  max-width: 450px; 
+  margin: 20px auto; 
+  backdrop-filter: blur(5px); 
+  -webkit-backdrop-filter: blur(5px); 
+}
